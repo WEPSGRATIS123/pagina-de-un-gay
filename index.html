@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Animada de Diego</title>
+    <style>
+        @keyframes skyChange {
+            0% { background-color: #87CEEB; }
+            50% { background-color: #4A90E2; }
+            100% { background-color: #87CEEB; }
+        }
+
+        @keyframes sunRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes sunMove {
+            0% { top: -50px; left: -50px; }
+            25% { top: 50px; left: 50px; }
+            50% { top: 50px; left: calc(100% - 150px); }
+            75% { top: calc(100% - 150px); left: calc(100% - 150px); }
+            100% { top: calc(100% - 150px); left: 50px; }
+        }
+
+        @keyframes messageFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            animation: skyChange 20s infinite;
+        }
+
+        .sun {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #FFD700;
+            animation: 
+                sunRotate 20s linear infinite,
+                sunMove 40s ease-in-out infinite;
+        }
+
+        .message {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1;
+            animation: messageFloat 3s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .cloud {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: cloudMove linear infinite;
+        }
+
+        .cloud:nth-child(1) { width: 100px; height: 40px; top: 20%; animation-duration: 30s; }
+        .cloud:nth-child(2) { width: 140px; height: 60px; top: 40%; animation-duration: 40s; }
+        .cloud:nth-child(3) { width: 80px; height: 30px; top: 60%; animation-duration: 35s; }
+
+        @keyframes cloudMove {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="message">
+        Diego es el más gey de Venezuela
+    </div>
+</body>
+</html>
